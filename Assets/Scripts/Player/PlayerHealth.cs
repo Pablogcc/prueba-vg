@@ -25,6 +25,7 @@ namespace AdventureSurvival.Player
         private bool isDead;
 
         public event Action<int, int> HealthChanged;
+        public event Action<int> Damaged;
         public event Action Died;
         public event Action Respawned;
 
@@ -55,6 +56,7 @@ namespace AdventureSurvival.Player
 
             currentHealth = Mathf.Max(currentHealth - amount, 0);
             HealthChanged?.Invoke(currentHealth, maxHealth);
+            Damaged?.Invoke(amount);
 
             if (currentHealth <= 0)
             {

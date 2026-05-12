@@ -1,3 +1,4 @@
+using AdventureSurvival.Audio;
 using UnityEngine;
 
 namespace AdventureSurvival.Inventory
@@ -9,6 +10,12 @@ namespace AdventureSurvival.Inventory
         [SerializeField] private int quantity = 1;
         [SerializeField] private string playerTag = "Player";
         [SerializeField] private bool destroyAfterPickup = true;
+
+        [Header("Feedback")]
+        [SerializeField] private AudioClip pickupSound;
+        [Range(0f, 1f)]
+        [SerializeField] private float pickupSoundVolume = 1f;
+        [SerializeField] private GameObject pickupEffectPrefab;
 
         private bool pickedUp;
 
@@ -31,6 +38,7 @@ namespace AdventureSurvival.Inventory
             }
 
             pickedUp = true;
+            PlayPickupFeedback();
 
             if (destroyAfterPickup)
             {
@@ -42,9 +50,23 @@ namespace AdventureSurvival.Inventory
             }
         }
 
+        private void PlayPickupFeedback()
+        {
+            if (pickupSound != null)
+            {
+                GameAudioManager.Instance.PlaySfxAtPosition(pickupSound, transform.position, pickupSoundVolume);
+            }
+
+            if (pickupEffectPrefab != null)
+            {
+                Instantiate(pickupEffectPrefab, transform.position, Quaternion.identity);
+            }
+        }
+
         private void OnValidate()
         {
             quantity = Mathf.Max(1, quantity);
+            pickupSoundVolume = Mathf.Clamp01(pickupSoundVolume);
         }
     }
 }

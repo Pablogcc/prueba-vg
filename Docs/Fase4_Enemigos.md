@@ -50,3 +50,7 @@ Esta fase añade enemigos simples para el prototipo 2D: patrulla, persecución, 
 ## Siguiente paso sugerido
 
 La siguiente fase puede añadir una UI de vida para enemigos, animaciones de ataque/daño, knockback o una moneda separada del inventario.
+
+## Siguiente fase
+
+Continúa con [Fase 5: pulido](Fase5_Pulido.md).
