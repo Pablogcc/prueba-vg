@@ -65,3 +65,7 @@ Opción con filas:
 - Los objetos `Consumable` pueden consumirse desde código con `InventoryManager.Instance.TryConsumeItem(itemData, playerHealth)`.
 - Si el consumible tiene `Heal Amount`, llamará a `PlayerHealth.Heal` sobre el jugador indicado.
 - Los objetos `Key` no se consumen con `TryConsumeItem`; se consultan con `HasItem` para abrir puertas, cofres o bloqueos en fases posteriores.
+
+## Siguiente fase
+
+Continúa con [Fase 4: enemigos básicos](Fase4_Enemigos.md).
